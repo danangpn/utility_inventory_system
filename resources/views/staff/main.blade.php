@@ -15,26 +15,6 @@
 @endsection
 
 @section('contents')
-<div class="container">
-	{{--<div class="jumbotron">--}}
-		{{--<h2 class="text-center">School University Utility Inventory System</h2>--}}
-	{{--</div>--}}
-	<div class="col-md-3 ">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="text-center">My Profile</h3>
-			</div>
-			<div class="panel-body">
-				<p><strong>Name: </strong>{{Auth::user()->lname}}, {{Auth::user()->fname}} {{Auth::user()->mname}}</p>
-
-				<ul class="nav nav-pills nav-stacked">
-				  <li role="presentation" class="active"><a href="{{route('staff')}}">List</a></li>
-				  <li role="presentation"><a href="{{route('logout')}}">Logout</a></li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
 	<div class="col-md-9 ">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -50,7 +30,7 @@
 					<div class="container">
 						{{--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--}}
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-8">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h3 class="panel-title">Inventory</h3>
@@ -132,7 +112,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 @endsection
