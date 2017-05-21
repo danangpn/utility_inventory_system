@@ -5,12 +5,12 @@ use App\Item;
 
 Route::get('add', function(){
 	$user = new User;
-	$user->lname = 'askal';
-	$user->fname = 'piyolo';
-	$user->mname = 'wawawe';
+	$user->lname = 'Sari';
+	$user->fname = 'Ida';
+	$user->mname = 'Rahmania';
 	$user->email = 'email@yahoo.com';
-	$user->username = 'admin456';
-	$user->password = bcrypt('admin456');
+	$user->username = 'admin';
+	$user->password = bcrypt('admin*1');
 	$user->save();
 	});
 Route::get('/item', function(){

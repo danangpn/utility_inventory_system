@@ -16,9 +16,9 @@
 
 @section('contents')
 <div class="container">
-	<div class="jumbotron">
-		<h2 class="text-center">School University Utility Inventory System</h2>
-	</div>
+	{{--<div class="jumbotron">--}}
+		{{--<h2 class="text-center">School University Utility Inventory System</h2>--}}
+	{{--</div>--}}
 	<div class="col-md-3 ">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
