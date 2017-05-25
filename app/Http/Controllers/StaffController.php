@@ -57,6 +57,11 @@ class StaffController extends Controller
     	$borrowers = borrower_item::distinct('borrower_id')->where('item_id', $item_id)->where('status', 0)->get();
     	return view('staff.view_borrowed',compact('find_item', 'borrowers'));
     }
+	public function update_quantity_item($item_id){
+    	$find_item = Item::find($item_id);
+//    	$borrowers = borrower_item::distinct('borrower_id')->where('item_id', $item_id)->where('status', 0)->get();
+    	return view('staff.update_quantity_item',compact('find_item')); //, 'borrowers'));
+    }
     public function staff_return($item_id, $borrowed_id){
     	$item = Item::find($item_id);
     	borrower_item::where('id',$borrowed_id)->where('status', 0)->update(['status'=> 1]);
@@ -79,6 +84,16 @@ class StaffController extends Controller
         $item->price = $request['price'];
         $user->item()->save($item);
         return redirect()->back()->with('item', 'You have successfully added new item');
+    }
+	public function action_update_quantity_item($item_id, Request $request){
+        $this->validate($request, [
+            'add_quantity' => 'required|max:5'
+        ]);
+		$itemFind = Item::find($item_id);
+		$quantity = $request['add_quantity'];
+		Item::where('id', $item_id)->update(['quantity'=> $quantity]);
+		$items = Item::paginate(10);
+		return view('staff.main', compact('items')) ->with('itemFind', 'You have successfully updated'.$itemFind->name.' by '.$quantity);
     }
 
     public function search(Request $request){

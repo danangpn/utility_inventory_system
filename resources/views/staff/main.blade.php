@@ -64,8 +64,8 @@
 										<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Inventory" />
 									</div>
 
-								<div>
-									<table class="table table-hover tablesorter" id="dev-table">
+								<div class="table table-responsive">
+									<table class="table table-hover tablesorter table-responsive" id="dev-table">
 											<thead>
 											<tr>
 												<th>#</th>
@@ -81,10 +81,11 @@
 											<tr>
 												<td>#</td>
 												<td>{{$item->name}}</td>
-												<td><span class="btn btn-info btn-xs btn-block" id="quantities">{{$item->quantity}}</span></td>
-												<td><a href="{{route('view_borrowed_item', ['item_id'=> $item->id])}}"><span class="btn btn-primary btn-xs btn-block" id="borrowed">{{$item->borrowed_item($item->id)}}</span></a></td>
-												<td>{{$item->created_at->format('l j/m/Y H:i:s')}}</td>
-												<td><a href="{{route('staff_borrow', ['item_id'=> $item->id])}}" class="btn btn-success btn-xs btn-block">Sell</a></td>
+												<td><a href="{{route('update_quantity_item', ['item_id'=> $item->id])}}"><button style="width:70px" class="btn btn-info btn-xs btn-block" id="quantities">{{$item->quantity}}</button>
+												</td>
+												<td><a href="{{route('view_borrowed_item', ['item_id'=> $item->id])}}"><button style="width:70px"  class="btn btn-primary btn-xs btn-block" id="borrowed">{{$item->borrowed_item($item->id)}}</button></a></td>
+												<td>{{$item->created_at->format('j/m/Y H:i:s')}}</td>
+												<td><a href="{{route('staff_borrow', ['item_id'=> $item->id])}}" class="btn btn-success btn-xs btn-block">Sell Item</a></td>
 											</tr>
 										@endforeach
 										</tbody>

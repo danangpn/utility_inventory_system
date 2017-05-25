@@ -61,6 +61,14 @@ Route::get('/staff/{item_id}/borrowed_item', [
 	'as'=> 'view_borrowed_item',
 	'uses'=> 'StaffController@view_borrowed_item'
 ]);
+Route::get('/staff/{item_id}/update_quantity_item/', [
+	'as'=> 'update_quantity_item',
+	'uses'=> 'StaffController@update_quantity_item'
+]);
+Route::post('/staff/{item_id}/action_update_quantity_item/', [
+	'as'=> 'action_update_quantity_item',
+	'uses'=> 'StaffController@action_update_quantity_item'
+]);
 Route::get('/staff/{item_id}/{borrowed_id}/', [
 	'as'=> 'staff_return',
 	'uses'=> 'StaffController@staff_return'

@@ -47,6 +47,7 @@
 				@if(Session::has('quantity'))
 					<div class="alert alert-success">{{Session::get('quantity')}}</div>
 				@endif
+				<div class="table-responsive">
 				<table class="table tablesorter" id="detail-borrow-table">
 					<thead>
 						<tr>
@@ -75,6 +76,7 @@
 						@endforeach
 					</tbody>
 				</table>
+					</div>
 			</div>
 		</div>
 	</div>
