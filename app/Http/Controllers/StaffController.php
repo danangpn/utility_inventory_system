@@ -90,7 +90,7 @@ class StaffController extends Controller
             'add_quantity' => 'required|max:5'
         ]);
 		$itemFind = Item::find($item_id);
-		$quantity = $request['add_quantity'];
+		$quantity = $itemFind->quantity + $request['add_quantity'];
 		Item::where('id', $item_id)->update(['quantity'=> $quantity]);
 		$items = Item::paginate(10);
 		return view('staff.main', compact('items')) ->with('itemFind', 'You have successfully updated'.$itemFind->name.' by '.$quantity);
