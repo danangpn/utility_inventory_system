@@ -10,9 +10,9 @@
 
 @section('contents')
 <div class="container">
-	<div class="jumbotron">
-		<h2 class="text-center">School University Utility Inventory System</h2>
-	</div>
+	{{--<div class="jumbotron">--}}
+		{{--<h2 class="text-center">School University Utility Inventory System</h2>--}}
+	{{--</div>--}}
 	<div class="col-md-3">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -45,27 +45,21 @@
 								<span class="help-block">{{$errors->first('quantity')}}</span>
 							@endif
 						</div>
+						<div class="form-group {{$errors->has('real_price') ? 'has-error' : ''}}">
+							<label>Real Sell Price</label>
+							<input type="number" name="real_price" class="form-control" value="{{$find_item->price}}">
+							@if($errors->has('real_price'))
+								<span class="help-block">{{$errors->first('real_price')}}</span>
+							@endif
+						</div>
 						<div class="form-group {{$errors->has('lname') ? 'has-error' : ''}}">
-							<label>Last Name</label>
-							<input type="text" name="lname" class="form-control">
+							<label>Seller Name</label>
+							<input type="text" name="lname" class="form-control" value="{{Auth::user()->fname}} {{Auth::user()->mname}} {{Auth::user()->lname}}">
 							@if($errors->has('lname'))
 								<span class="help-block">{{$errors->first('lname')}}</span>
 							@endif
 						</div>
-						<div class="form-group {{$errors->has('fname') ? 'has-error' : ''}}">
-							<label>First Name</label>
-							<input type="text" name="fname" class="form-control">
-							@if($errors->has('fname'))
-								<span class="help-block">{{$errors->first('fname')}}</span>
-							@endif
-						</div>
-						<div class="form-group {{$errors->has('mname') ? 'has-error' : ''}}">
-							<label>Middle Name</label>
-							<input type="text" name="mname" class="form-control">
-							@if($errors->has('mname'))
-								<span class="help-block">{{$errors->first('mname')}}</span>
-							@endif
-						</div>
+
 						<button type="submit" class="btn btn-primary btn-block">Submit</button>
 						{{csrf_field()}}
 					</form>

@@ -16,9 +16,9 @@
 
 @section('contents')
 <div class="container">
-	<div class="jumbotron">
-		<h2 class="text-center">School University Utility Inventory System</h2>
-	</div>
+	{{--<div class="jumbotron">--}}
+		{{--<h2 class="text-center">School University Utility Inventory System</h2>--}}
+	{{--</div>--}}
 	<div class="col-md-3 ">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -41,19 +41,22 @@
 				<h3 class="text-center">Details</h3>
 			</div>
 			<div class="panel-body">
+				<div class="panel-body">
+					<input type="text" class="form-control" id="detail-borrow-table-filter" data-action="filter" data-filters="#detail-borrow-table" placeholder="Filter Details" />
+				</div>
 				@if(Session::has('quantity'))
 					<div class="alert alert-success">{{Session::get('quantity')}}</div>
 				@endif
-				<table class="table">
+				<table class="table tablesorter" id="detail-borrow-table">
 					<thead>
 						<tr>
 							<th>Item Name</th>
 							<th>Quantity</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Middle Name</th>
+							<th>Seller Name</th>
+							<th>Sell Price</th>
+							<th>Total SellPrice</th>
 							<th>Date</th>
-							<th>Action</th>
+							{{--<th>Action</th>--}}
 						</tr>
 					</thead>
 					<tbody>
@@ -62,12 +65,12 @@
 								<td>{{$borrower->item->name}}</td>
 								<td>{{$borrower->quantity}}</td>
 								<td>{{$borrower->borrower->lname}}</td>
-								<td>{{$borrower->borrower->fname}}</td>
-								<td>{{$borrower->borrower->mname}}</td>
+								<td>{{$borrower->item->price}}</td>
+								<td>{{$borrower->quantity * $borrower->item->price}}</td>
 								<td>{{$borrower->created_at->diffForHumans()}}</td>
-								<td>
-									<a href="{{route('staff_return', ['item_id'=> $find_item->id,'borrowed_id'=> $borrower->id])}}" class="btn btn-danger btn-xs">return</a>
-								</td>
+								{{--<td>--}}
+									{{--<a href="{{route('staff_return', ['item_id'=> $find_item->id,'borrowed_id'=> $borrower->id])}}" class="btn btn-danger btn-xs">return</a>--}}
+								{{--</td>--}}
 							</tr>
 						@endforeach
 					</tbody>

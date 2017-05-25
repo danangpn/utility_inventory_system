@@ -10,26 +10,10 @@
         @yield('styles')
     </head>
     <body>
-    <div class="container">
-        <div class="col-md-3 ">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="text-center">My Profile</h3>
-                </div>
-                <div class="panel-body">
-                    <p><strong>Name: </strong>{{Auth::user()->lname}}, {{Auth::user()->fname}} {{Auth::user()->mname}}</p>
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" class="active"><a href="{{route('staff')}}">List</a></li>
-                    <li role="presentation"><a href="{{route('logout')}}">Logout</a></li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
 
     @yield('contents')
 
-    </div>
     </body>
         <script src="{{URL::to('js/jquery.js')}}"></script>
         <script src="{{URL::to('js/bootstrap.min.js')}}"></script>

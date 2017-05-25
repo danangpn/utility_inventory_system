@@ -26,22 +26,22 @@ class StaffController extends Controller
     }
     public function borrow_item(Request $request, $item_id){
     	$this->validate($request, [
-    		'lname' => 'required|max:15',
-    		'fname' => 'required|max:15',
-    		'mname' => 'required|max:15',
+    		'real_price' => 'required|max:18',
+    		'lname' => 'required|max:50',
     		'quantity'=> 'required|max:4'
     	]);
 
     	$borrower = new Borrower;
     	$borrower->lname = $request['lname'];
-    	$borrower->fname = $request['fname'];
-    	$borrower->mname = $request['mname'];
+//    	$borrower->fname = $request['fname'];
+//    	$borrower->mname = $request['mname'];
     	$borrower->save();
 
     	$find_borrower = Borrower::find($borrower->id);
     	$borrower_item = new borrower_item;
     	$borrower_item->item_id = $item_id;
     	$borrower_item->quantity = $request['quantity'];
+    	$borrower_item->real_price = $request['real_price'];
     	$borrower_item->status = 0;
     	$find_borrower->borrower_item()->save($borrower_item);
 
@@ -49,7 +49,7 @@ class StaffController extends Controller
     	$item->quantity = $item->quantity - $request['quantity'];
     	Item::where('id',$item_id)->update(['quantity'=> $item->quantity]);
 
-    	return redirect()->route('staff')->with('borrow', 'You have borrwed successfully');
+    	return redirect()->route('staff')->with('borrow', 'You have sell item successfully');
     }
 
     public function view_borrowed_item($item_id){
@@ -68,13 +68,15 @@ class StaffController extends Controller
     public function add_item(Request $request){
         $this->validate($request, [
             'name' => 'required|max:30',
-            'quantity' => 'required|max:5'
+            'quantity' => 'required|max:5',
+			'price' => 'required|max:18',
         ]);
 
         $user = User::find(Auth::id());
         $item = new Item;
         $item->name = $request['name'];
         $item->quantity = $request['quantity'];
+        $item->price = $request['price'];
         $user->item()->save($item);
         return redirect()->back()->with('item', 'You have successfully added new item');
     }

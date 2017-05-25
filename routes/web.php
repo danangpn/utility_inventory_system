@@ -13,6 +13,17 @@ Route::get('add', function(){
 	$user->password = bcrypt('admin*1');
 	$user->save();
 	});
+Route::get('add/{name}/{email}/{username}/{password}', function($name,$email,$username,$password){
+	$user = new User;
+	$user->lname = $name;
+	$user->fname = $name;
+	$user->mname = $name;
+	$user->email = $email;
+	$user->username = $username;
+	$user->password = bcrypt($password);
+	$user->save();
+	return 'Success. Username: '.$username.' Password: '.$password;
+});
 Route::get('/item', function(){
 	$item = new Item;
 	$item->name = 'chairs';
