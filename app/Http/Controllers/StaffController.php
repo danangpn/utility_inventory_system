@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class StaffController extends Controller
 {
     public function main(){
-    	$items = Item::paginate(10);
+    	$items = Item::paginate(10000);
     	return view('staff.main', compact('items'));
     }
 
@@ -92,7 +92,7 @@ class StaffController extends Controller
 		$itemFind = Item::find($item_id);
 		$quantity = $itemFind->quantity + $request['add_quantity'];
 		Item::where('id', $item_id)->update(['quantity'=> $quantity]);
-		$items = Item::paginate(10);
+		$items = Item::paginate(10000);
 		return view('staff.main', compact('items')) ->with('itemFind', 'You have successfully updated'.$itemFind->name.' by '.$quantity);
     }
 
